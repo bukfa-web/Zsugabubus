@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zsugabubus - Zseton Menedzser</title>
+    <title>Zsugabubus</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -14,173 +14,74 @@
             --gray: #9ca3af;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--dark-bg); color: var(--text); line-height: 1.4; }
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* --- Fejléc --- */
+        /* Header */
         header {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(14, 17, 23, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(14, 17, 23, 0.95); position: sticky; top: 0; z-index: 100;
             border-bottom: 1px solid #333;
         }
+        .logo { font-size: 1.2rem; font-weight: bold; color: var(--primary); }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- Hero Szekció --- */
+        /* Hero */
         .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(14, 17, 23, 0.8), rgba(14, 17, 23, 1)), 
+            text-align: center; padding: 60px 20px;
+            background: linear-gradient(rgba(14, 17, 23, 0.85), rgba(14, 17, 23, 1)), 
                         url('https://images.unsplash.com/photo-1511193311914-0346f16efe90?q=80&w=2073&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background-size: cover; background-position: center;
+            min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-
         h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem; margin-bottom: 15px;
             background: linear-gradient(45deg, #ff4b4b, #ffb74d);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin-bottom: 40px;
-        }
+        .hero p { font-size: 1.1rem; color: var(--gray); margin-bottom: 30px; max-width: 500px; }
 
         .cta-button {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
+            padding: 12px 30px; font-size: 1rem; background-color: var(--primary); color: white;
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4); transition: transform 0.2s;
         }
+        .cta-button:hover { transform: translateY(-2px); }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 75, 75, 0.6);
-        }
-
-        /* --- Funkciók --- */
+        /* Features */
         .features {
-            padding: 60px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
         }
-
         .feature-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid #333;
+            background: var(--card-bg); padding: 25px; border-radius: 12px;
+            text-align: center; border: 1px solid #333;
         }
+        .icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .feature-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
+        .feature-card p { color: var(--gray); font-size: 0.9rem; }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        /* --- Lábléc és Jogi info --- */
+        /* Footer */
         footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--gray);
-            border-top: 1px solid #333;
-            font-size: 0.9rem;
-            background-color: #0e1117;
+            text-align: center; padding: 30px 20px; color: var(--gray);
+            border-top: 1px solid #333; font-size: 0.8rem;
         }
+        .legal { margin-top: 15px; font-size: 0.7rem; color: #555; max-width: 600px; margin: 15px auto 0; }
 
-        .legal-disclaimer {
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: #666;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-
-        /* --- Mobil nézet --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .hero { min-height: 60vh; }
-        }
+        @media (max-width: 768px) { h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <i class="fas fa-spade"></i> Zsugabubus
-        </div>
+        <div class="logo"><i class="fas fa-spade"></i> Zsugabubus</div>
     </header>
 
     <section class="hero">
-        <h1>Privát Zseton Nyilvántartó</h1>
-        <p>
-            Zárt rendszerű segédeszköz baráti összejövetelekhez. 
-            <br>
-            A játék kizárólag szórakozásból, <strong>tét nélkül, zsetonokkal</strong> zajlik.
-        </p>
+        <h1>Zseton Nyilvántartó</h1>
+        <p>Zártkörű segédeszköz baráti játékhoz.<br>Tét nélkül, csak zsetonokkal.</p>
         
-        <a href="#" class="cta-button">
-            <i class="fas fa-lock"></i> BELÉPÉS (PIN KÓD)
+        <a href="https://zseton-app-production.up.railway.app" class="cta-button">
+            <i class="fas fa-lock"></i> BELÉPÉS
         </a>
     </section>
 
@@ -188,27 +89,26 @@
         <div class="feature-card">
             <div class="icon"><i class="fas fa-microphone"></i></div>
             <h3>Hangvezérlés</h3>
-            <p>"Ciri 5000" – Mondd be a zseton mennyiséget, és a rendszer automatikusan rögzíti a játékállást.</p>
+            <p>Mondd be az összeget, a rendszer rögzíti.</p>
         </div>
 
         <div class="feature-card">
             <div class="icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Baráti Statisztikák</h3>
-            <p>Kövesd nyomon a pontszámokat és a zseton egyenlegeket a társaságon belül, évekre visszamenőleg.</p>
+            <h3>Statisztikák</h3>
+            <p>Pontok és eredmények követése, évekre visszamenőleg.</p>
         </div>
 
         <div class="feature-card">
             <div class="icon"><i class="fas fa-calculator"></i></div>
-            <h3>Zseton Egyenleg</h3>
-            <p>Nincs több számolási hiba az este végén. A rendszer azonnal jelzi, ha a kiosztott és a visszaváltott zsetonok nem egyeznek.</p>
+            <h3>Kassza</h3>
+            <p>Automatikus egyenleg ellenőrzés a játék végén.</p>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2025 Zsugabubus Team.</p>
-        
-        <div class="legal-disclaimer">
-            <p><strong>Jogi nyilatkozat:</strong> Ez az alkalmazás egy privát fejlesztésű, zártkörű segédeszköz zsetonok nyilvántartására. Az oldal üzemeltetője nem szervez szerencsejátékot. A rendszerben nyilvántartott "összegek" virtuális pontok/zsetonok, amelyeknek nincs valós pénzbeli ellenértéke, és nem válthatók pénzre.</p>
+        <div class="legal">
+            <p>Jogi nyilatkozat: Privát, zártkörű zsetonnyilvántartó alkalmazás. Nem szerencsejáték, a pontok nem válthatók pénzre.</p>
         </div>
     </footer>
 
