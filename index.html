@@ -1,176 +1,199 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>Zsugabubus - Poker Player</title>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <style>
-    /*--CSS reset--*/
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsugabubus - Póker Menedzser</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4b4b; /* Streamlit piros */
+            --dark-bg: #0e1117; /* Streamlit sötét háttér */
+            --card-bg: #262730;
+            --text: #fafafa;
+            --gray: #9ca3af;
+        }
 
-    /*-- Alap beállítások --*/
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: url("https://i.imgur.com/GVGz5EM.jpg") center center no-repeat fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif; /* Betűtípus megadása ajánlott */
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /*-- Kártya stílusok --*/
-    .profile-card {
-      width: 480px;
-      max-width: 90%; /* Mobilbarát szélesség */
-      background-color: rgba(255, 255, 255, 0.85); /* Átlátszóbb, modernebb háttér */
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); /* Szebb árnyék */
-      backdrop-filter: blur(5px); /* Opcionális: elhomályosítja a hátteret a kártya mögött */
-      text-align: center;
-      padding-bottom: 20px;
-      margin-top: 60px; /* Hely a kiugró képnek */
-    }
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    .head {
-      position: relative;
-      margin-bottom: 20px;
-    }
+        /* --- Fejléc --- */
+        header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(14, 17, 23, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
 
-    /*-- Profilkép --*/
-    .profile-image {
-      margin-top: -60px; /* Ez húzza fel a képet */
-      margin-bottom: 15px;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 5px solid #fff; /* Fehér keret a kép körül */
-      background-color: #666;
-      filter: grayscale(50%);
-      transition: all 0.3s ease-in-out;
-      object-fit: cover; /* Torzulás elkerülése */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+        /* --- Hero Szekció --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(14, 17, 23, 0.8), rgba(14, 17, 23, 1)), 
+                        url('https://images.unsplash.com/photo-1511193311914-0346f16efe90?q=80&w=2073&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    img:hover {
-      filter: grayscale(0%); /* Színes lesz hoverre */
-      transform: scale(1.1); /* Kicsit nő, nem takarja ki a szöveget */
-    }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff4b4b, #ffb74d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /*-- Szövegek --*/
-    .name-headline h1 {
-      font-size: 1.8rem;
-      color: #333;
-      margin-bottom: 5px;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
 
-    .name-headline h2 {
-      font-size: 1.2rem;
-      color: #e91e63; /* Kiemelő szín */
-      margin-bottom: 10px;
-      font-weight: normal;
-    }
+        .cta-button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
+        }
 
-    .name-headline p {
-      color: #666;
-    }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 75, 75, 0.6);
+        }
 
-    .content {
-      padding: 0 30px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      margin-top: 20px;
-      padding-top: 20px;
-    }
+        /* --- Funkciók --- */
+        .features {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-    .about {
-      line-height: 1.6;
-      color: #444;
-      margin-bottom: 25px;
-    }
-    
-    .language-sep {
-      display: block;
-      margin: 10px 0;
-      border-bottom: 1px dashed #ccc;
-    }
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
 
-    /*-- Ikonok --*/
-    .links ul {
-      list-style-type: none;
-    }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
 
-    .links li {
-      display: inline-block;
-      margin: 0 10px;
-    }
+        .icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
 
-    .social-icon {
-      color: #555;
-      transition: color 0.3s;
-    }
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
 
-    .social-icon:hover {
-      color: #e91e63; /* Hover szín */
-    }
-  </style>
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* --- Lábléc --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray);
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobil nézet --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .hero { min-height: 60vh; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="profile-card">
-    
-    <div class="head">
-      <div class="profile-image">
-        <img src="https://i.imgur.com/C5gCcSF.jpg" alt="Zsugabubus profilkép">
-      </div>
-      
-      <div class="name-headline">
-        <h1>Zsugabubus</h1>
-        <h2>Poker Player</h2>
-        <p><span>from:</span> <i class="fa fa-map-marker"></i> Pécs, HU</p>
-      </div>
-    </div>
+    <header>
+        <div class="logo">
+            <i class="fas fa-spade"></i> Zsugabubus
+        </div>
+    </header>
 
-    <div class="content">
-      <p class="about">
-        I like to play poker with my friends. You will probably find me on Twitter talking about the game or on Instagram where I post too many photos of beautiful #hands.
-        <span class="language-sep"></span>
-        Szeretek pókerezni a barátaimmal. Valószínűleg találsz engem a Twitteren, amikor a játékról beszélek, vagy az Instagramon, ahol túl sok fényképet teszek közzé gyönyörű #leosztások-ról.
-      </p>
+    <section class="hero">
+        <h1>A Póker Estek Királya</h1>
+        <p>Felejtsd el a papírt és a ceruzát! Kezeld a zsetonokat, a kasszát és a statisztikákat egyetlen profi felületen. Hangvezérléssel.</p>
+        
+        <a href="#" class="cta-button">
+            <i class="fas fa-play"></i> JÁTÉK INDÍTÁSA
+        </a>
+    </section>
 
-      <section class="links">
-        <h3>Contact me via:</h3>
-        <br>
-        <ul>
-          <li>
-            <a href="https://twitter.com/#" title="Twitter" class="social-icon" aria-label="Twitter profil">
-              <i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://instagram.com/#" title="Instagram" class="social-icon" aria-label="Instagram profil">
-              <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://behance.net/#" title="Behance" class="social-icon" aria-label="Behance profil">
-              <i class="fa fa-2x fa-behance-square" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
-      </section>
-    </div>
-    
-  </div>
+    <section class="features">
+        <div class="feature-card">
+            <div class="icon"><i class="fas fa-microphone"></i></div>
+            <h3>Hangvezérlés</h3>
+            <p>"Ciri 5000" – Csak mondd be, és a rendszer automatikusan rögzíti a zsetonvásárlást vagy a kiszállót.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Profi Statisztikák</h3>
+            <p>Ki a legnagyobb Cápa? Ki a Hal? Kövesd nyomon a nyerési arányokat és a profitot évekre visszamenőleg.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon"><i class="fas fa-calculator"></i></div>
+            <h3>Pontos Elszámolás</h3>
+            <p>Nincs több vita a kasszánál. A rendszer azonnal jelzi, ha hiány van az asztalon, vagy ha minden stimmel.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Zsugabubus Team. Minden jog fenntartva.</p>
+        <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.6;">
+            Created with ❤️ & ♠️
+        </p>
+    </footer>
 
 </body>
 </html>
