@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zsugabubus - Póker Menedzser</title>
+    <title>Zsugabubus - Zseton Menedzser</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff4b4b; /* Streamlit piros */
-            --dark-bg: #0e1117; /* Streamlit sötét háttér */
+            --primary: #ff4b4b;
+            --dark-bg: #0e1117;
             --card-bg: #262730;
             --text: #fafafa;
             --gray: #9ca3af;
@@ -75,7 +75,7 @@
         .hero p {
             font-size: 1.2rem;
             color: var(--gray);
-            max-width: 600px;
+            max-width: 700px;
             margin-bottom: 40px;
         }
 
@@ -135,13 +135,25 @@
             font-size: 0.95rem;
         }
 
-        /* --- Lábléc --- */
+        /* --- Lábléc és Jogi info --- */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 40px 20px;
             color: var(--gray);
             border-top: 1px solid #333;
             font-size: 0.9rem;
+            background-color: #0e1117;
+        }
+
+        .legal-disclaimer {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 1px solid #333;
+            padding-top: 20px;
         }
 
         /* --- Mobil nézet --- */
@@ -160,11 +172,15 @@
     </header>
 
     <section class="hero">
-        <h1>A Póker Estek Királya</h1>
-        <p>Felejtsd el a papírt és a ceruzát! Kezeld a zsetonokat, a kasszát és a statisztikákat egyetlen profi felületen. Hangvezérléssel.</p>
+        <h1>Privát Zseton Nyilvántartó</h1>
+        <p>
+            Zárt rendszerű segédeszköz baráti összejövetelekhez. 
+            <br>
+            A játék kizárólag szórakozásból, <strong>tét nélkül, zsetonokkal</strong> zajlik.
+        </p>
         
         <a href="#" class="cta-button">
-            <i class="fas fa-play"></i> JÁTÉK INDÍTÁSA
+            <i class="fas fa-lock"></i> BELÉPÉS (PIN KÓD)
         </a>
     </section>
 
@@ -172,27 +188,28 @@
         <div class="feature-card">
             <div class="icon"><i class="fas fa-microphone"></i></div>
             <h3>Hangvezérlés</h3>
-            <p>"Ciri 5000" – Csak mondd be, és a rendszer automatikusan rögzíti a zsetonvásárlást vagy a kiszállót.</p>
+            <p>"Ciri 5000" – Mondd be a zseton mennyiséget, és a rendszer automatikusan rögzíti a játékállást.</p>
         </div>
 
         <div class="feature-card">
             <div class="icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Profi Statisztikák</h3>
-            <p>Ki a legnagyobb Cápa? Ki a Hal? Kövesd nyomon a nyerési arányokat és a profitot évekre visszamenőleg.</p>
+            <h3>Baráti Statisztikák</h3>
+            <p>Kövesd nyomon a pontszámokat és a zseton egyenlegeket a társaságon belül, évekre visszamenőleg.</p>
         </div>
 
         <div class="feature-card">
             <div class="icon"><i class="fas fa-calculator"></i></div>
-            <h3>Pontos Elszámolás</h3>
-            <p>Nincs több vita a kasszánál. A rendszer azonnal jelzi, ha hiány van az asztalon, vagy ha minden stimmel.</p>
+            <h3>Zseton Egyenleg</h3>
+            <p>Nincs több számolási hiba az este végén. A rendszer azonnal jelzi, ha a kiosztott és a visszaváltott zsetonok nem egyeznek.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Zsugabubus Team. Minden jog fenntartva.</p>
-        <p style="margin-top: 10px; font-size: 0.8em; opacity: 0.6;">
-            Created with ❤️ & ♠️
-        </p>
+        <p>&copy; 2025 Zsugabubus Team.</p>
+        
+        <div class="legal-disclaimer">
+            <p><strong>Jogi nyilatkozat:</strong> Ez az alkalmazás egy privát fejlesztésű, zártkörű segédeszköz zsetonok nyilvántartására. Az oldal üzemeltetője nem szervez szerencsejátékot. A rendszerben nyilvántartott "összegek" virtuális pontok/zsetonok, amelyeknek nincs valós pénzbeli ellenértéke, és nem válthatók pénzre.</p>
+        </div>
     </footer>
 
 </body>
