@@ -1,157 +1,176 @@
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2020 by bukfa-web (http://jsbin.com/vuvolok/17/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
-<meta name="robots" content="noindex">
--<!DOCTYPE html>
-<html lang = "HU">
+<!DOCTYPE html>
+<html lang="hu">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Zsugabubus</title>
-   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<style id="jsbin-css">
-/*--2020.03.23--*/
-/*-- Background colors for containers
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Zsugabubus - Poker Player</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style>
+    /*--CSS reset--*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.profile-card {
-  background-color: hsla(60, 100%, 50%, .4);
-}
-.head {
-  background-color: hsla(120, 100%, 50%, .4);
-}
-.content {
-  background-color: hsla(120, 100%, 50%, .4);
-}
-.profile-image {
-  background-color: hsla(300, 100%, 50%, .4);
-}
-.name-headline {
-  background-color: hsla(300, 100%, 50%, .4);
-}
-.about {
-  background-color: hsla(300, 100%, 50%, .4);
-}
-.links {
-  background-color: hsla(300, 100%, 50%, .4);
-}--*/
-/*--CSS reset--*/
-* {
-margin : 0;
-padding : 0;
-box-sizing : border-box;
-font-size : 100%;
-}
-  /*-- Pozicionálás--*/
+    /*-- Alap beállítások --*/
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url("https://i.imgur.com/GVGz5EM.jpg") center center no-repeat fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif; /* Betűtípus megadása ajánlott */
+    }
 
-.profile-card {
-width : 480px;
-max-width : calc(100vw - 10px);
-}
+    /*-- Kártya stílusok --*/
+    .profile-card {
+      width: 480px;
+      max-width: 90%; /* Mobilbarát szélesség */
+      background-color: rgba(255, 255, 255, 0.85); /* Átlátszóbb, modernebb háttér */
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); /* Szebb árnyék */
+      backdrop-filter: blur(5px); /* Opcionális: elhomályosítja a hátteret a kártya mögött */
+      text-align: center;
+      padding-bottom: 20px;
+      margin-top: 60px; /* Hely a kiugró képnek */
+    }
 
-body {
-height : 100vh;
-display : flex;
-align-items : center;
-justify-content : center;
-background : url("https://i.imgur.com/GVGz5EM.jpg") center center no-repeat fixed;
-background-size : cover;
-}
+    .head {
+      position: relative;
+      margin-bottom: 20px;
+    }
 
-.head, .links {
-text-align : center;
-}
+    /*-- Profilkép --*/
+    .profile-image {
+      margin-top: -60px; /* Ez húzza fel a képet */
+      margin-bottom: 15px;
+    }
 
-.head, .content {
-width : 90%;
-margin : 0 auto;
-}
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 5px solid #fff; /* Fehér keret a kép körül */
+      background-color: #666;
+      filter: grayscale(50%);
+      transition: all 0.3s ease-in-out;
+      object-fit: cover; /* Torzulás elkerülése */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
 
-.content {
-border-top : 1px solid hsl(0 0% 30% / 0.8);
-}
+    img:hover {
+      filter: grayscale(0%); /* Színes lesz hoverre */
+      transform: scale(1.1); /* Kicsit nő, nem takarja ki a szöveget */
+    }
 
-.head, .about {
-margin-bottom : 10%;
-}
+    /*-- Szövegek --*/
+    .name-headline h1 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
 
-.content {
-padding : 5% 10%;
-}
-  /*--Profile image--*//
+    .name-headline h2 {
+      font-size: 1.2rem;
+      color: #e91e63; /* Kiemelő szín */
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
 
-.profile-image {
-margin-top : -60px;
-}
+    .name-headline p {
+      color: #666;
+    }
 
+    .content {
+      padding: 0 30px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      margin-top: 20px;
+      padding-top: 20px;
+    }
 
-img {
-width : 120px;
-height : 120px;
-border-radius : 50%;
-padding : 1px;
-background-color : #666;
-filter : grayscale(50%);
-transition : all 0.5s ease-in-out;
-}
+    .about {
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 25px;
+    }
+    
+    .language-sep {
+      display: block;
+      margin: 10px 0;
+      border-bottom: 1px dashed #ccc;
+    }
 
+    /*-- Ikonok --*/
+    .links ul {
+      list-style-type: none;
+    }
 
-img:hover {
-filter : grayscale(20%);
-transform : scale(1.8);
-}
+    .links li {
+      display: inline-block;
+      margin: 0 10px;
+    }
 
+    .social-icon {
+      color: #555;
+      transition: color 0.3s;
+    }
 
-.profile-card {
-background-color : hsl(0 0% 100% / 0.5);
-border-radius : 30px;
-box-shadow : 10px 10px 80px hsl(0 0% 0% / 0.8);
-}
-
-
-ul {
-list-style-type : none;
-}
-
-
-li {
-display : inline;
-}
-</style>
+    .social-icon:hover {
+      color: #e91e63; /* Hover szín */
+    }
+  </style>
 </head>
 <body>
+
   <div class="profile-card">
+    
     <div class="head">
       <div class="profile-image">
-        <img src="https://i.imgur.com/C5gCcSF.jpg" alt="Zsugabubus">
+        <img src="https://i.imgur.com/C5gCcSF.jpg" alt="Zsugabubus profilkép">
       </div>
+      
       <div class="name-headline">
         <h1>Zsugabubus</h1>
         <h2>Poker Player</h2>
-        <span>from:</span>
-        <p><i class="fa fa-map-marker"></i> Pécs, HU</p>
+        <p><span>from:</span> <i class="fa fa-map-marker"></i> Pécs, HU</p>
       </div>
     </div>
+
     <div class="content">
       <p class="about">
         I like to play poker with my friends. You will probably find me on Twitter talking about the game or on Instagram where I post too many photos of beautiful #hands.
- Szeretek pókerezni a barátaimmal. Valószínűleg találsz engem a Twitteren, amikor a játékról beszélek, vagy az Instagramon, ahol túl sok fényképet teszek közzé gyönyörű #leosztások-ról.
-     </p>
+        <span class="language-sep"></span>
+        Szeretek pókerezni a barátaimmal. Valószínűleg találsz engem a Twitteren, amikor a játékról beszélek, vagy az Instagramon, ahol túl sok fényképet teszek közzé gyönyörű #leosztások-ról.
+      </p>
+
       <section class="links">
-        <h2>Contact me via:</h2>
+        <h3>Contact me via:</h3>
+        <br>
         <ul>
-          <li><a href="https://twitter.com/#" title="Twitter" class="social-icon"><i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i></a></li>
-          <li><a href="https://instagram.com/#" title="Instagram" class="social-icon"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a></li>
-          <li><a href="https://behance.net/#" title="Behance" class="social-icon"><i class="fa fa-2x fa-behance-square" aria-hidden="true"></i></a></li>
-     <p>
-</p>
+          <li>
+            <a href="https://twitter.com/#" title="Twitter" class="social-icon" aria-label="Twitter profil">
+              <i class="fa fa-2x fa-twitter-square" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/#" title="Instagram" class="social-icon" aria-label="Instagram profil">
+              <i class="fa fa-2x fa-instagram" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://behance.net/#" title="Behance" class="social-icon" aria-label="Behance profil">
+              <i class="fa fa-2x fa-behance-square" aria-hidden="true"></i>
+            </a>
+          </li>
         </ul>
       </section>
     </div>
+    
   </div>
+
 </body>
 </html>
