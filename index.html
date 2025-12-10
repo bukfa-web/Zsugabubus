@@ -25,14 +25,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Header */
@@ -44,7 +38,7 @@
             backdrop-filter: blur(10px);
         }
         .logo { font-size: 1.2rem; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        .logo i { animation: float 3s ease-in-out infinite; } /* Lebegő logó */
+        .logo i { animation: float 3s ease-in-out infinite; }
 
         /* Hero */
         .hero {
@@ -55,11 +49,7 @@
             min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         
-        /* Beúszó elemek késleltetéssel */
-        .hero h1, .hero p, .hero .cta-button {
-            opacity: 0; /* Alapból láthatatlan */
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
+        .hero h1, .hero p, .hero .cta-button { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
         .hero h1 { animation-delay: 0.2s; }
         .hero p { animation-delay: 0.4s; }
         .hero .cta-button { animation-delay: 0.6s; }
@@ -83,31 +73,20 @@
         }
 
         /* Features */
-        .features {
-            padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
-        }
+        .features { padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .feature-card {
             background: var(--card-bg); padding: 25px; border-radius: 12px;
             text-align: center; border: 1px solid #333; transition: all 0.3s ease;
         }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-        }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
         .icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .icon i { animation: float 3s ease-in-out infinite; animation-delay: 0.5s; } /* Lebegő funkció ikonok */
-        
+        .icon i { animation: float 3s ease-in-out infinite; animation-delay: 0.5s; }
         .feature-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
         .feature-card p { color: var(--gray); font-size: 0.9rem; }
 
         /* Footer */
-        footer {
-            text-align: center; padding: 30px 20px; color: var(--gray);
-            border-top: 1px solid #333; font-size: 0.8rem;
-        }
+        footer { text-align: center; padding: 30px 20px; color: var(--gray); border-top: 1px solid #333; font-size: 0.8rem; }
         .legal { margin-top: 15px; font-size: 0.7rem; color: #555; max-width: 600px; margin: 15px auto 0; }
-
         @media (max-width: 768px) { h1 { font-size: 2rem; } }
     </style>
 </head>
@@ -119,10 +98,9 @@
 
     <section class="hero">
         <h1>Zseton Nyilvántartó</h1>
-        /* <p>Zártkörű segédeszköz baráti játékhoz.<br>Tét nélkül, csak zsetonokkal.</p> */
         
         <a href="https://zseton-app-production.up.railway.app" class="cta-button">
-            <i class="fas fa-lock"></i> BELÉPÉS
+            <i class="fas fa-lock"></i> BELÉPÉS (PIN KÓD)
         </a>
     </section>
 
@@ -130,7 +108,7 @@
         <div class="feature-card">
             <div class="icon"><i class="fas fa-microphone"></i></div>
             <h3>Hangvezérlés</h3>
-            <p>Mondd be az összeget, a rendszer rögzíti.</p>
+            <p>Mondd be a zsetonszámot, a rendszer rögzíti.</p>
         </div>
 
         <div class="feature-card">
@@ -155,4 +133,3 @@
 
 </body>
 </html>
-
